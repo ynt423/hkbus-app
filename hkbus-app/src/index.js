@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
+import map from './map'
 import App from "./App";
 import RouteSearch from "./components/RouteSearch";
 const root = ReactDOM.createRoot(document.getElementById("root"));
