@@ -10,13 +10,10 @@ const RouteSearch = () => {
     .then((response) => {
       return response.json();
     })
-    .then((response) => {
-      console.log(response);
-    })
     .catch((error) => {
       console.log("Error: ${error}");
     });
-  }, []);
+  }, []); //only run once
 
   return (
     <div>
