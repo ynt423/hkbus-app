@@ -19,7 +19,7 @@ class RouteSearch extends Component {
                 </div>
                 <div>
                   <input
-                    className="inputbox-1"
+                    className="form-control"
                     type="text"
                     list="search"
                     id="input-search-busNo"

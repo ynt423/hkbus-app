@@ -13,8 +13,8 @@ code {
     monospace;
 }
 
-.inputbox-1 {
-  width: 30%;
+input {
+  width: 50%;
   height: 40px;
   border: 1px solid #ccc;
   border-radius: 4px;
