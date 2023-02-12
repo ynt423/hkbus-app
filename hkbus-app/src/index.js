@@ -5,6 +5,7 @@ import App from "./App";
 import RouteSearch from "./components/routeSearch";
 import "bootstrap/dist/css/bootstrap.css";
 import "font-awesome/css/font-awesome.css";
+import "./styles/index.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
