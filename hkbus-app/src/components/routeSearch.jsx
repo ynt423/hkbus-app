@@ -4,15 +4,13 @@ import React, { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.css";
 
-const [BusInput, setBusInput] = useState("");
 const busfetch = async (url) => {
-  setPage(2);
   const dataFetch = await fetch(url, {
     method: "GET",
-    headers: {
+    /* headers: {
       Accept: "application/json",
       Authorization: auth,
-    },
+    }, */
   });
   let parsedata = await dataFetch.json();
   /* setData(parsedata.photos); */
