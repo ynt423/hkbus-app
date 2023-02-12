@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import Button from "react-bootstrap/Button";
-import "bootstrap/dist/css/bootstrap.css";
+import "../styles/index.css";
 class RouteSearch extends Component {
   state = {
     busNoInput: "",
@@ -39,13 +38,13 @@ class RouteSearch extends Component {
                 </div>
               </div>
               <div className="searchbtn">
-                <Button
+                <button
                   type="button"
                   className="btn btn-default"
                   //onClick="search()"
                 >
                   查看路線
-                </Button>
+                </button>
               </div>
             </div>
           </div>
