@@ -4,6 +4,8 @@ import "bootstrap/dist/css/bootstrap.css";
 
 const RouteSearch = () => {
   const [BusInput, setBusInput] = useState("");
+
+  useEffect(() => {
   fetch("https://data.etabus.gov.hk/v1/transport/kmb/route-stop")
     .then((response) => {
       return response.json();
@@ -14,6 +16,8 @@ const RouteSearch = () => {
     .catch((error) => {
       console.log("Error: ${error}");
     });
+  }, []);
+
   return (
     <div>
       RouteSearch
