@@ -22,6 +22,7 @@ class RouteSearch extends Component {
                     type="text"
                     list="search"
                     id="input-search-busNo"
+                    placeholder="請輸入巴士號碼"
                     value={this.state.busNoInput}
                     onChange={(event) => {
                       this.setState({ busNoInput: event.target.value });
