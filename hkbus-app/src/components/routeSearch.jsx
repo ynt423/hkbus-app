@@ -4,19 +4,18 @@ import React, { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.css";
 
-const busfetch = async (url) => {
-  const dataFetch = await fetch(url, {
-    method: "GET",
-    /* headers: {
-      Accept: "application/json",
-      Authorization: auth,
-    }, */
-  });
-  let parsedata = await dataFetch.json();
-  /* setData(parsedata.photos); */
-};
-
 const RouteSearch = () => {
+  const [BusInput, setBusInput] = useState("");
+  fetch("https://data.etabus.gov.hk/v1/transport/kmb/route-stop")
+    .then((response) => {
+      return response.json();
+    })
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => {
+      console.log("Error: ${error}");
+    });
   return (
     <div>
       RouteSearch
