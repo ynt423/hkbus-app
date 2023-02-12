@@ -4,9 +4,21 @@ import React, { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.css";
 
-const RouteSearch = () => {
-  const [busNoInput, setBusInput] = useState("");
+const [BusInput, setBusInput] = useState("");
+const busfetch = async (url) => {
+  setPage(2);
+  const dataFetch = await fetch(url, {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      Authorization: auth,
+    },
+  });
+  let parsedata = await dataFetch.json();
+  /* setData(parsedata.photos); */
+};
 
+const RouteSearch = () => {
   return (
     <div>
       RouteSearch
@@ -17,20 +29,6 @@ const RouteSearch = () => {
             <div className="routecontent">
               <div>
                 <label htmlFor="input-search">選擇路線</label>
-              </div>
-              <div>
-                <input
-                  className="inputbox-1"
-                  type="text"
-                  list="search"
-                  id="input-search-busNo"
-                  placeholder="請輸入巴士號碼"
-                  value={busNoInput}
-                  onChange={(event) => {
-                    this.setState({ busNoInput: event.target.value });
-                  }}
-                ></input>
-                {/* need a datalist to select 巴士號碼 */}
               </div>
               <div className="searchbtn"></div>
               <div>目的地 </div>
