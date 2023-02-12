@@ -22,7 +22,7 @@ export default function App() {
         </Navbar>
 
         <Routes>
-          <Route path="/" element={<index />} />
+          <Route path="/" element={<home />} />
           <Route path="/map" element={<map />} />
           <Route path="*" element={<h1>404</h1>} />
         </Routes>

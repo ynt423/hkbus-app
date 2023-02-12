@@ -9,7 +9,6 @@ class RouteSearch extends Component {
   render() {
     return (
       <div>
-        RouteSearch
         <div className="RouteSection">
           <div className="index-title">路線搜尋</div>
           <div className="index-content">
