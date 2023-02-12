@@ -14,7 +14,7 @@ export default function App() {
 
         <Navbar bg="dark" variant="dark">
           <Container>
-            <Navbar.Brand href="#home">hkbus-app</Navbar.Brand>
+            <Navbar.Brand>hkbus-app</Navbar.Brand>
             <Nav className="me-auto">
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="/map">Map</Nav.Link>
