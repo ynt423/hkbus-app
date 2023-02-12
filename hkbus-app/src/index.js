@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import map from "./map";
 import App from "./App";
-import RouteSearch from "./components/RouteSearch";
+import RouteSearch from "./components/routeSearch";
 import "bootstrap/dist/css/bootstrap.css";
 import "font-awesome/css/font-awesome.css";
 const root = ReactDOM.createRoot(document.getElementById("root"));
