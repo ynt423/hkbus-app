@@ -13,7 +13,7 @@ code {
     monospace;
 }
 
-input {
+.inputbox-1 {
   width: 50%;
   height: 40px;
   border: 1px solid #ccc;
