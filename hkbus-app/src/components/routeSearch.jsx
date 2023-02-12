@@ -34,7 +34,7 @@ const RouteSearch = () => {
                   placeholder="請輸入巴士號碼"
                   value={BusInput}
                   onChange={(event) => {
-                    this.setState({ busNoInput: event.target.value });
+                    setBusInput(event.target.value);
                   }}
                 ></input>
                 {/* need a datalist to select 巴士號碼 */}
