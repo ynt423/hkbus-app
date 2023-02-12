@@ -1,7 +1,5 @@
 import "../styles/index.css";
 import React, { useState, useEffect } from "react";
-//import Button from "react-bootstrap/Button";
-import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.css";
 
 const RouteSearch = () => {
@@ -26,6 +24,20 @@ const RouteSearch = () => {
             <div className="routecontent">
               <div>
                 <label htmlFor="input-search">選擇路線</label>
+              </div>
+              <div>
+                <input
+                  className="inputbox-1"
+                  type="text"
+                  list="search"
+                  id="input-search-busNo"
+                  placeholder="請輸入巴士號碼"
+                  value={BusInput}
+                  onChange={(event) => {
+                    this.setState({ busNoInput: event.target.value });
+                  }}
+                ></input>
+                {/* need a datalist to select 巴士號碼 */}
               </div>
               <div className="searchbtn"></div>
               <div>目的地 </div>
