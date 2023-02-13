@@ -20,7 +20,6 @@ const RouteSearch = () => {
 
   return (
     <div>
-      RouteSearch
       <div className="RouteSection">
         <div className="index-title">路線搜尋</div>
         <div className="index-content">
@@ -43,6 +42,7 @@ const RouteSearch = () => {
                 ></input>
                 {/* need a datalist to select 巴士號碼 */}
               </div>
+              <div>輸入路線：{BusInput}</div>
               <div className="searchbtn"></div>
               <div>目的地 </div>
               <div>
@@ -60,6 +60,9 @@ const RouteSearch = () => {
                 查看路線
               </button>
             </div>
+            {/* {return reselt of the route} */}
+                  
+
           </div>
         </div>
       </div>
