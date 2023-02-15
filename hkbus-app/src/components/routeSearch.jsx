@@ -4,20 +4,43 @@ import "bootstrap/dist/css/bootstrap.css";
 
 const RouteSearch = () => {
   const [BusInput, setBusInput] = useState("");
+  let x = [];
+  let [data, setData] = useState([]);
+  /*  By oscar: I want to write this function for fetching json data */
 
+  const getData = async () => {
+    const response = await fetch(
+      "https://data.etabus.gov.hk/v1/transport/kmb/route-stop"
+    ).then((response) => response.json());
+    console.log(response.data);
+  };
   useEffect(() => {
-  fetch("https://data.etabus.gov.hk/v1/transport/kmb/route-stop")
-    .then((response) => {
-      return response.json();
-    })
-    .then((response) => {
-      console.log(response);
-    })
-    .catch((error) => {
-      console.log("Error: ${error}");
-    });
-  }, []); //only run once
+    getData();
+  }, []);
 
+  /*   const BusSearch = async (url) => {
+    const dataFetch = await fetch(url, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+      },
+    });
+    let parsedata = await dataFetch.json();
+    console.log(parsedata.data);
+    x.map(x.concat(parsedata.data));
+    console.log(x);
+  };
+  useEffect(() => {
+    BusSearch(URL);
+  }, []); */
+  /*  useEffect(async () => {
+    const response = await fetch(
+      "https://data.etabus.gov.hk/v1/transport/kmb/route-stop"
+    );
+    const json = await response.json();
+    setData(json);
+  }, []); */ //only run once */
+  /* setBusInput(response.) */
   return (
     <div>
       <div className="RouteSection">
@@ -61,8 +84,11 @@ const RouteSearch = () => {
               </button>
             </div>
             {/* {return reselt of the route} */}
-                  
-
+            {/* {data
+              .filter((target) => target.route == 1)
+              .map((filteredTarget) => (
+                <li>{filteredTarget.stop}</li>
+              ))} */}
           </div>
         </div>
       </div>
