@@ -15,8 +15,8 @@ export default function App() {
           <Container>
             <Navbar.Brand>香港交通一站通</Navbar.Brand>
             <Nav className="me-auto">
-              <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="/map">Map</Nav.Link>
+              <Nav.Link href="/">主頁</Nav.Link>
+              <Nav.Link href="/map">地圖</Nav.Link>
             </Nav>
           </Container>
         </Navbar>
