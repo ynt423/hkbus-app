@@ -17,6 +17,7 @@ const RouteSearch = () => {
   useEffect(() => {
     getData().then((data) => {
       setData(data);
+      console.log(data);
     });
   }, []);
 
@@ -63,11 +64,13 @@ const RouteSearch = () => {
               </button>
             </div>
             {/* {return reselt of the route} */}
-            {/* {data
+            {data
               .filter((target) => target.route == 1)
               .map((filteredTarget) => (
-                <li>{filteredTarget.stop}</li>
-              ))} */}
+                <li key={filteredTarget.seq + filteredTarget.bound}>
+                  {filteredTarget.stop}
+                </li>
+              ))}
           </div>
         </div>
       </div>
