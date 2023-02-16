@@ -6,6 +6,11 @@ const RouteSearch = () => {
   const [BusInput, setBusInput] = useState("");
   const [data, setData] = useState([]);
   const [stopName, setStopName] = useState([]);
+  let [showRoute, setShowRoute] = useState(false);
+
+  const handleChange = () => {
+    showRoute == false ? setShowRoute(true) : setShowRoute(false)
+  }
   /*  By oscar: I want to write this function for fetching json data */
 
   const getData = async () => {
@@ -70,13 +75,13 @@ const RouteSearch = () => {
               <button
                 type="button"
                 className="btn btn-default"
-                //onClick="search()"
+                onClick={() => handleChange()}
               >
                 查看路線
               </button>
             </div>
             {/* {return reselt of the route} */}
-            {data
+            {showRoute && data
               .filter((target) => target.route == "E31")
               .map((filteredTarget) => (
                 <li key={filteredTarget.seq + filteredTarget.bound}>
