@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.css";
 const RouteSearch = () => {
   const [BusInput, setBusInput] = useState("");
   const [data, setData] = useState([]);
+  const [stopName, setStopName] = useState([]);
   /*  By oscar: I want to write this function for fetching json data */
 
   const getData = async () => {
@@ -14,10 +15,21 @@ const RouteSearch = () => {
     let { data } = await response.json();
     return data;
   };
+
   useEffect(() => {
     getData().then((data) => {
       setData(data);
-      console.log(data);
+      // convert all ID to name
+      // setStopName(data.map(async (data)=>{
+      //   const response = await fetch(
+      //     'https://data.etabus.gov.hk/v1/transport/kmb/stop/'+data
+      //   )
+      //   let { result } = await response.json();
+      //   console.log(result);
+      //   return result.name_tc;
+      // }))
+      // console.log(data);
+      
     });
   }, []);
 
@@ -45,7 +57,7 @@ const RouteSearch = () => {
                 ></input>
                 {/* need a datalist to select 巴士號碼 */}
               </div>
-              <div>輸入路線：{BusInput}</div>
+              <div>輸入路線：{BusInput.toUpperCase()}</div>
               <div className="searchbtn"></div>
               <div>目的地 </div>
               <div>
@@ -65,7 +77,7 @@ const RouteSearch = () => {
             </div>
             {/* {return reselt of the route} */}
             {data
-              .filter((target) => target.route == 1)
+              .filter((target) => target.route == "E31")
               .map((filteredTarget) => (
                 <li key={filteredTarget.seq + filteredTarget.bound}>
                   {filteredTarget.stop}
