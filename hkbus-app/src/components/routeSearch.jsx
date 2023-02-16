@@ -90,7 +90,7 @@ const RouteSearch = () => {
               <button
                 type="button"
                 className="btn btn-default"
-                onClick={() => searchBusStation()}
+                onClick={() => searchBusStation(BusInput)}
               >
                 查看路線
               </button>
