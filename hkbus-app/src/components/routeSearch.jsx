@@ -39,6 +39,20 @@ const RouteSearch = () => {
     //getBusStation("25BD7B50919AA221");
   }, []);
 
+  const searchBusStation = (BusInput) => {
+    {
+      console.log("Hello world");
+      console.log(BusInput);
+      data &&
+        data.map((d) => {
+          //for checking
+          if (d.route == BusInput) {
+            console.log("Result is found!");
+            console.log(d.stop);
+          }
+        });
+    }
+  };
   return (
     <div>
       <div className="RouteSection">
@@ -76,7 +90,7 @@ const RouteSearch = () => {
               <button
                 type="button"
                 className="btn btn-default"
-                onClick={() => handleChange()}
+                onClick={() => searchBusStation()}
               >
                 查看路線
               </button>
@@ -84,7 +98,8 @@ const RouteSearch = () => {
             <div className="routedata">
               {data &&
                 data.map((d) => {
-                  console.log(d);
+                  /* console.log(d);
+                  console.log(d.stop); */
                   return <busRoute data={d} />;
                 })}
             </div>
