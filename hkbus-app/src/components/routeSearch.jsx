@@ -33,15 +33,6 @@ const RouteSearch = () => {
   useEffect(() => {
     getData().then((data) => {
       setData(data);
-      // convert all ID to name
-      // setStopName(data.map(async (data)=>{
-      //   const response = await fetch(
-      //     'https://data.etabus.gov.hk/v1/transport/kmb/stop/'+data
-      //   )
-      //   let { result } = await response.json();
-      //   console.log(result);
-      //   return result.name_tc;
-      // }))
       console.log(data);
     });
     //getBusStation("25BD7B50919AA221");
@@ -94,7 +85,7 @@ const RouteSearch = () => {
               .filter((target) => target.route == BusInput)
               .map((filteredTarget) => (
                 <li key={filteredTarget.seq + filteredTarget.bound}>
-                  {filteredTarget.stop}
+                  { useEffect(getBusStation(filteredTarget.stop),[]) }
                 </li>
               ))}
           </div>
