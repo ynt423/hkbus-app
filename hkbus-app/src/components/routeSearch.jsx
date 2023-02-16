@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.css";
 const RouteSearch = () => {
   const [BusInput, setBusInput] = useState("");
   const [data, setData] = useState([]);
-  const [stopName, setStopName] = useState([]);
+  const [curStopName, setCurStopName] = useState([]);
   let [showRoute, setShowRoute] = useState(false);
 
   const handleChange = () => {
@@ -26,7 +26,7 @@ const RouteSearch = () => {
       "https://data.etabus.gov.hk/v1/transport/kmb/stop/"+stationID
     );
     let result = await response.json();
-    console.log(result);
+    //console.log(result);
     return result
   }
 
@@ -44,7 +44,7 @@ const RouteSearch = () => {
       // }))
       console.log(data);
     });
-    getBusStation("25BD7B50919AA221");
+    //getBusStation("25BD7B50919AA221");
   }, []);
 
   return (
