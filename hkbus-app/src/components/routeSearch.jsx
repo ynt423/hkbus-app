@@ -1,5 +1,6 @@
 import "../styles/index.css";
 import React, { useState, useEffect } from "react";
+import busRoute from "./busRoute";
 import "bootstrap/dist/css/bootstrap.css";
 
 const RouteSearch = () => {
@@ -9,8 +10,8 @@ const RouteSearch = () => {
   let [showRoute, setShowRoute] = useState(false);
 
   const handleChange = () => {
-    showRoute == false ? setShowRoute(true) : setShowRoute(false)
-  }
+    showRoute == false ? setShowRoute(true) : setShowRoute(false);
+  };
   /*  By oscar: I want to write this function for fetching json data */
 
   const getData = async () => {
@@ -23,12 +24,12 @@ const RouteSearch = () => {
 
   const getBusStation = async (stationID) => {
     const response = await fetch(
-      "https://data.etabus.gov.hk/v1/transport/kmb/stop/"+stationID
+      "https://data.etabus.gov.hk/v1/transport/kmb/stop/" + stationID
     );
     let result = await response.json();
     //console.log(result);
-    return result
-  }
+    return result;
+  };
 
   useEffect(() => {
     getData().then((data) => {
@@ -80,14 +81,22 @@ const RouteSearch = () => {
                 查看路線
               </button>
             </div>
+            <div className="routedata">
+              {data &&
+                data.map((d) => {
+                  console.log(d);
+                  return <busRoute data={d} />;
+                })}
+            </div>
             {/* {return reselt of the route} */}
-            {showRoute && data
-              .filter((target) => target.route == BusInput)
-              .map((filteredTarget) => (
-                <li key={filteredTarget.seq + filteredTarget.bound}>
-                  { useEffect(getBusStation(filteredTarget.stop),[]) }
-                </li>
-              ))}
+            {showRoute &&
+              data
+                .filter((target) => target.route == BusInput)
+                .map((filteredTarget) => (
+                  <li key={filteredTarget.seq + filteredTarget.bound}>
+                    {/*   {useEffect(getBusStation(filteredTarget.stop), [])} */}
+                  </li>
+                ))}
           </div>
         </div>
       </div>
