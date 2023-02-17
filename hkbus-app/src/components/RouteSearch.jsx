@@ -1,8 +1,8 @@
 import "../styles/index.css";
 import React, { useState, useEffect } from "react";
 import BusRoute from "./BusRoute";
+import SelectMenu from "./SelectMenu";
 import "bootstrap/dist/css/bootstrap.css";
-import Dropdown from "react-bootstrap/Dropdown";
 
 const RouteSearch = () => {
   const [BusInput, setBusInput] = useState("");
@@ -39,7 +39,17 @@ const RouteSearch = () => {
     });
     //getBusStation("25BD7B50919AA221");
   }, []);
-
+  const busNumberRendering = () => {
+    console.log("Rendering busnum is working...");
+    data &&
+      data.map((d) => {
+        //for checking
+        console.log("Result is found!");
+        console.log(d.route);
+        return d;
+        // for select menu to show all the bus number
+      });
+  };
   const searchBusStation = (BusInput) => {
     let resultFound = false;
     if (BusInput) {
@@ -87,6 +97,7 @@ const RouteSearch = () => {
                     setBusInput(event.target.value);
                   }}
                 ></input>
+                <SelectMenu onClick={() => busNumberRendering()}></SelectMenu>
                 {/* need a datalist to select 巴士號碼 */}
               </div>
               <div>輸入路線：{BusInput && BusInput.toUpperCase()}</div>
