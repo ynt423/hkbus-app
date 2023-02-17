@@ -40,6 +40,7 @@ const RouteSearch = () => {
   }, []);
 
   const searchBusStation = (BusInput) => {
+    let resultFound = false;
     if (BusInput) {
       {
         console.log("Hello world");
@@ -50,11 +51,16 @@ const RouteSearch = () => {
             if (d.route == BusInput) {
               console.log("Result is found!");
               console.log(d.stop);
+              resultFound = true;
             }
           });
       }
+      if (!resultFound) {
+        alert("查無此路線，請重新輸入");
+        setBusInput("");
+      }
     } else {
-      alert("Please enter a bus route!");
+      alert("請輸入巴士號碼");
     }
   };
   return (
@@ -93,8 +99,10 @@ const RouteSearch = () => {
             <div className="searchbtn">
               <button
                 type="button"
-                className="btn btn-default"
-                onClick={() => searchBusStation(BusInput)}
+                className="btn btn-secondary"
+                onClick={() => {
+                  searchBusStation(BusInput);
+                }}
               >
                 查看路線
               </button>
@@ -104,10 +112,10 @@ const RouteSearch = () => {
                 data.map((d) => {
                   /* console.log(d);
                   console.log(d.stop); */
-                  return <BusRoute data={d} />;
+                  //return <BusRoute data={d} />;
                 })}
             </div>
-            S{/* {return reselt of the route} */}
+            {/* {return reselt of the route} */}
             {showRoute &&
               data
                 .filter((target) => target.route == BusInput)
