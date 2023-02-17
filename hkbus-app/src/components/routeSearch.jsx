@@ -1,6 +1,6 @@
 import "../styles/index.css";
 import React, { useState, useEffect } from "react";
-import busRoute from "./busRoute";
+import BusRoute from "./BusRoute";
 import "bootstrap/dist/css/bootstrap.css";
 
 const RouteSearch = () => {
@@ -40,17 +40,21 @@ const RouteSearch = () => {
   }, []);
 
   const searchBusStation = (BusInput) => {
-    {
-      console.log("Hello world");
-      console.log(BusInput);
-      data &&
-        data.map((d) => {
-          //for checking
-          if (d.route == BusInput) {
-            console.log("Result is found!");
-            console.log(d.stop);
-          }
-        });
+    if (BusInput) {
+      {
+        console.log("Hello world");
+        console.log(BusInput);
+        data &&
+          data.map((d) => {
+            //for checking
+            if (d.route == BusInput) {
+              console.log("Result is found!");
+              console.log(d.stop);
+            }
+          });
+      }
+    } else {
+      alert("Please enter a bus route!");
     }
   };
   return (
@@ -77,7 +81,7 @@ const RouteSearch = () => {
                 ></input>
                 {/* need a datalist to select 巴士號碼 */}
               </div>
-              <div>輸入路線：{BusInput.toUpperCase()}</div>
+              <div>輸入路線：{BusInput && BusInput.toUpperCase()}</div>
               <div className="searchbtn"></div>
               <div>目的地 </div>
               <div>
@@ -100,10 +104,10 @@ const RouteSearch = () => {
                 data.map((d) => {
                   /* console.log(d);
                   console.log(d.stop); */
-                  return <busRoute data={d} />;
+                  return <BusRoute data={d} />;
                 })}
             </div>
-            {/* {return reselt of the route} */}
+            S{/* {return reselt of the route} */}
             {showRoute &&
               data
                 .filter((target) => target.route == BusInput)

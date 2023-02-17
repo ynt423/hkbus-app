@@ -1,6 +1,6 @@
 import React from "react";
 
-const busRoute = ({ data }) => {
+const BusRoute = ({ data }) => {
   return (
     <div>
       <p>{data.route}</p>
@@ -9,4 +9,4 @@ const busRoute = ({ data }) => {
   );
 };
 
-export default busRoute;
+export default BusRoute;
