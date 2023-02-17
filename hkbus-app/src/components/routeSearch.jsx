@@ -107,14 +107,7 @@ const RouteSearch = () => {
                 查看路線
               </button>
             </div>
-            <div className="routedata">
-              {data &&
-                data.map((d) => {
-                  /* console.log(d);
-                  console.log(d.stop); */
-                  //return <BusRoute data={d} />;
-                })}
-            </div>
+            <div className="routedata"></div>
             {/* {return reselt of the route} */}
             {showRoute &&
               data
