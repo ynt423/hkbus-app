@@ -2,6 +2,7 @@ import "../styles/index.css";
 import React, { useState, useEffect } from "react";
 import BusRoute from "./BusRoute";
 import "bootstrap/dist/css/bootstrap.css";
+import Dropdown from "react-bootstrap/Dropdown";
 
 const RouteSearch = () => {
   const [BusInput, setBusInput] = useState("");
@@ -10,7 +11,7 @@ const RouteSearch = () => {
   let [showRoute, setShowRoute] = useState(false);
 
   const handleChange = () => {
-    showRoute == false ? setShowRoute(true) : setShowRoute(false);
+    showRoute === false ? setShowRoute(true) : setShowRoute(false);
   };
   /*  By oscar: I want to write this function for fetching json data */
 
@@ -48,7 +49,7 @@ const RouteSearch = () => {
         data &&
           data.map((d) => {
             //for checking
-            if (d.route == BusInput) {
+            if (d.route === BusInput) {
               console.log("Result is found!");
               console.log(d.stop);
               resultFound = true;
@@ -73,13 +74,14 @@ const RouteSearch = () => {
               <div>
                 <label htmlFor="input-search">選擇路線</label>
               </div>
-              <div>
+
+              <div className="input-group">
                 <input
                   className="inputbox-1"
                   type="text"
                   list="search"
                   id="input-search-busNo"
-                  placeholder="請輸入巴士號碼"
+                  placeholder="請輸入巴士號碼..."
                   value={BusInput}
                   onChange={(event) => {
                     setBusInput(event.target.value);
@@ -111,7 +113,7 @@ const RouteSearch = () => {
             {/* {return reselt of the route} */}
             {showRoute &&
               data
-                .filter((target) => target.route == BusInput)
+                .filter((target) => target.route === BusInput)
                 .map((filteredTarget) => (
                   <li key={filteredTarget.seq + filteredTarget.bound}>
                     {/*   {useEffect(getBusStation(filteredTarget.stop), [])} */}
