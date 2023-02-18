@@ -1,24 +1,23 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect, useCallback } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import Dropdown from "react-bootstrap/Dropdown";
 import Form from "react-bootstrap/Form";
 import DropdownItem from "react-bootstrap/esm/DropdownItem";
-import BusInputContext from "./BusInputConext";
 
-const SelectMenu = ({ data }) => {
-  const businput = useContext(BusInputContext);
+const SelectMenu = ({ data, setBusInput }) => {
   const [busNoArr, setBusNoArr] = useState([]);
   const [buslength, setBuslength] = useState(0);
-  const busNumberRendering = () => {
-    console.log("Rendering busnum is working...");
+  const busNumberRendering = useCallback(() => {
+    const newBusNoArr = [...busNoArr]; //temp array
 
-    data.map((d) => {
-      if (!busNoArr.includes(d.route)) {
-        busNoArr.push(d.route);
-        setBuslength(busNoArr.length);
+    data.forEach((d) => {
+      if (!newBusNoArr.includes(d.route)) {
+        newBusNoArr.push(d.route);
       }
     });
-  };
+    setBusNoArr(newBusNoArr); //setstate
+    setBuslength(newBusNoArr.length); //setstate
+  });
 
   useEffect(() => {
     busNumberRendering();
@@ -77,10 +76,7 @@ const SelectMenu = ({ data }) => {
 
         <Dropdown.Menu className="dropdown-menu" as={CustomMenu}>
           {busNoArr.map((n) => (
-            <DropdownItem
-              onClick={() => businput.setBusInput(n)}
-              length={buslength}
-            >
+            <DropdownItem onClick={() => setBusInput(n)} length={buslength}>
               {n}
             </DropdownItem>
           ))}

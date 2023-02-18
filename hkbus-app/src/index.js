@@ -5,15 +5,12 @@ import App from "./App";
 import RouteSearch from "./components/RouteSearch";
 import "bootstrap/dist/css/bootstrap.css";
 import "font-awesome/css/font-awesome.css";
-import { BusInputContextProvider } from "./components/BusInputConext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <App />
-    <BusInputContextProvider>
-      <RouteSearch />
-    </BusInputContextProvider>
+    <RouteSearch />
   </React.StrictMode>
 );
 
