@@ -7,9 +7,10 @@ import BusInputContext from "./BusInputConext";
 
 const RouteSearch = () => {
   const businput = useContext(BusInputContext);
-  const [BusInput, setBusInput] = useState("");
   const [data, setData] = useState([]);
-  const [curStopName, setCurStopName] = useState([]);
+  const [busStation, setBusStation] = useState([]);
+  const [routeArrI, setRouteArrI] = useState([]);
+  const [routeArrO, setRouteArrO] = useState([]);
   let [showRoute, setShowRoute] = useState(false);
 
   const handleChange = () => {
@@ -25,23 +26,40 @@ const RouteSearch = () => {
     return data;
   };
 
-  const getBusStation = async (stationID) => {
+  const getBusStation = async () => {
     const response = await fetch(
-      "https://data.etabus.gov.hk/v1/transport/kmb/stop/" + stationID
+      "https://data.etabus.gov.hk/v1/transport/kmb/stop/"
     );
-    let result = await response.json();
-    //console.log(result);
-    return result;
+    let { data } = await response.json();
+    return data;
   };
+
+  const stationNameConverter = (stationCode) => {
+    let stationName = "";
+    busStation &&
+      busStation.map((d) => {
+        if (d.stop === stationCode) {
+          stationName = d.name_tc;
+        }
+      });
+    return stationName;
+  }
 
   useEffect(() => {
     getData().then((data) => {
       setData(data);
     });
-    //getBusStation("25BD7B50919AA221");
+  }, []);
+
+  useEffect(() => {
+    getBusStation().then((data) => {
+      setBusStation(data);
+    });
   }, []);
 
   const searchBusStation = (BusInput) => {
+    let tmp_arr_I = [];
+    let tmp_arr_O = [];
     let resultFound = false;
     if (businput.BusInput) {
       {
@@ -52,7 +70,12 @@ const RouteSearch = () => {
             //for checking
             if (d.route === BusInput) {
               console.log("Result is found!");
-              console.log(d.stop);
+              console.log(d.stop, d.seq, d.bound, d.service_type);
+              if (d.bound === "I") {
+                tmp_arr_I.push(d.stop);
+              } else if (d.bound === "O") {
+                tmp_arr_O.push(d.stop);
+              }
               resultFound = true;
             }
           });
@@ -64,6 +87,8 @@ const RouteSearch = () => {
     } else {
       alert("請輸入巴士號碼");
     }
+    console.log(tmp_arr_I);
+    return tmp_arr_I;
   };
   return (
     <div>
@@ -97,24 +122,38 @@ const RouteSearch = () => {
                 輸入路線：{businput.BusInput && businput.BusInput.toUpperCase()}
               </div>
               <div className="searchbtn"></div>
-              <div>目的地 </div>
-              <div>
-                <b> 竹園邨 </b>
-                <span>⇋</span>
-                <b> 尖沙咀碼頭 </b>
-              </div>
+                  <br />
             </div>
             <div className="searchbtn">
+            <button
+                type="button"
+                className="btn btn-secondary"
+                onClick={() => {
+                  setRouteArrI(searchBusStation(businput.BusInput));
+                  console.log(routeArrI);
+                }}
+              >
+                查詢路線
+              </button> 
+              &nbsp;
               <button
                 type="button"
                 className="btn btn-secondary"
                 onClick={() => {
-                  searchBusStation(businput.BusInput);
+                  console.log(busStation[0].stop);
                 }}
               >
                 查看路線
               </button>
             </div>
+
+            <div>目的地 </div>
+              <div>
+                <b> {stationNameConverter(routeArrI[0])} </b>
+                <span>⇋</span>
+                <b> {stationNameConverter(routeArrI[routeArrI.length - 1])} </b>
+              </div>
+
             <div className="routedata"></div>
             {/* {return reselt of the route} */}
             {showRoute &&
