@@ -5,17 +5,20 @@ import Form from "react-bootstrap/Form";
 import DropdownItem from "react-bootstrap/esm/DropdownItem";
 
 const SelectMenu = ({ data }) => {
-  /* const busNumberRendering = (data) => {
+  const busNoArr = [];
+  const busNumberRendering = () => {
     console.log("Rendering busnum is working...");
     data &&
       data.map((d) => {
         //for checking
-        console.log("Result is found!");
-        console.log(d.route);
-        return d;
+        /* console.log("debug"); */
+        if (busNoArr.includes(d.route) == false) {
+          busNoArr.push(d.route);
+          console.log("bus number has push into busNoArr");
+        }
         // for select menu to show all the bus number
       });
-  }; */
+  };
   const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
     <a
       href=""
@@ -64,14 +67,14 @@ const SelectMenu = ({ data }) => {
     <div>
       <Dropdown>
         <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
-          Custom toggle
+          選擇路線
         </Dropdown.Toggle>
 
         <Dropdown.Menu as={CustomMenu}>
-          {data &&
-            data.map((d) => {
-              return <DropdownItem data={d.route}>{d.route}</DropdownItem>;
-            })}
+          {busNumberRendering()}
+          {busNoArr.map((n) => {
+            return <DropdownItem>{n}</DropdownItem>;
+          })}
           <Dropdown.Item eventKey="1">Red</Dropdown.Item>
           <Dropdown.Item eventKey="2">Blue</Dropdown.Item>
           <Dropdown.Item eventKey="3" active>
@@ -80,7 +83,6 @@ const SelectMenu = ({ data }) => {
           <Dropdown.Item eventKey="1">Red-Orange</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
-      ,
     </div>
   );
 };
