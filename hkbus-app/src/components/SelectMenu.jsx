@@ -70,17 +70,17 @@ const SelectMenu = ({ data }) => {
           選擇路線
         </Dropdown.Toggle>
 
-        <Dropdown.Menu as={CustomMenu}>
+        <Dropdown.Menu className="dropdown-menu" as={CustomMenu}>
           {busNumberRendering()}
           {busNoArr.map((n) => {
             return <DropdownItem>{n}</DropdownItem>;
           })}
-          <Dropdown.Item eventKey="1">Red</Dropdown.Item>
+          {/* <Dropdown.Item eventKey="1">Red</Dropdown.Item>
           <Dropdown.Item eventKey="2">Blue</Dropdown.Item>
           <Dropdown.Item eventKey="3" active>
             Orange
           </Dropdown.Item>
-          <Dropdown.Item eventKey="1">Red-Orange</Dropdown.Item>
+          <Dropdown.Item eventKey="1">Red-Orange</Dropdown.Item> */}
         </Dropdown.Menu>
       </Dropdown>
     </div>
