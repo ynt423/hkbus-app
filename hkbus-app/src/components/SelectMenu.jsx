@@ -1,24 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import Dropdown from "react-bootstrap/Dropdown";
 import Form from "react-bootstrap/Form";
 import DropdownItem from "react-bootstrap/esm/DropdownItem";
+import BusInputContext from "./BusInputConext";
 
 const SelectMenu = ({ data }) => {
-  const busNoArr = [];
+  const businput = useContext(BusInputContext);
+  const [busNoArr, setBusNoArr] = useState([]);
+  const [buslength, setBuslength] = useState(0);
   const busNumberRendering = () => {
     console.log("Rendering busnum is working...");
-    data &&
-      data.map((d) => {
-        //for checking
-        /* console.log("debug"); */
-        if (busNoArr.includes(d.route) == false) {
-          busNoArr.push(d.route);
-          console.log("bus number has push into busNoArr");
-        }
-        // for select menu to show all the bus number
-      });
+
+    for (let i = 0; i < data.length; i++) {
+      if (!busNoArr.includes(data[i].route)) {
+        busNoArr.push(data[i].route);
+        console.log("bus number has push into busNoArr");
+        setBuslength(busNoArr.length);
+      }
+    }
   };
+
+  useEffect(() => {
+    busNumberRendering();
+  }, [data]);
+
   const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
     <a
       href=""
@@ -64,17 +70,18 @@ const SelectMenu = ({ data }) => {
     }
   );
   return (
-    <div>
+    <div length={buslength}>
       <Dropdown>
         <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
           選擇路線
         </Dropdown.Toggle>
 
         <Dropdown.Menu className="dropdown-menu" as={CustomMenu}>
-          {busNumberRendering()}
-          {busNoArr.map((n) => {
-            return <DropdownItem>{n}</DropdownItem>;
-          })}
+          {busNoArr.map((n) => (
+            <DropdownItem onClick={() => businput.setBusInput(n)}>
+              {n}
+            </DropdownItem>
+          ))}
           {/* <Dropdown.Item eventKey="1">Red</Dropdown.Item>
           <Dropdown.Item eventKey="2">Blue</Dropdown.Item>
           <Dropdown.Item eventKey="3" active>

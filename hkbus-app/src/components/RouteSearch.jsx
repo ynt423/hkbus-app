@@ -1,10 +1,12 @@
 import "../styles/index.css";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import BusRoute from "./BusRoute";
 import SelectMenu from "./SelectMenu";
 import "bootstrap/dist/css/bootstrap.css";
+import BusInputContext from "./BusInputConext";
 
 const RouteSearch = () => {
+  const businput = useContext(BusInputContext);
   const [BusInput, setBusInput] = useState("");
   const [data, setData] = useState([]);
   const [curStopName, setCurStopName] = useState([]);
@@ -35,14 +37,13 @@ const RouteSearch = () => {
   useEffect(() => {
     getData().then((data) => {
       setData(data);
-      console.log(data);
     });
     //getBusStation("25BD7B50919AA221");
   }, []);
 
   const searchBusStation = (BusInput) => {
     let resultFound = false;
-    if (BusInput) {
+    if (businput.BusInput) {
       {
         console.log("Hello world");
         console.log(BusInput);
@@ -58,7 +59,7 @@ const RouteSearch = () => {
       }
       if (!resultFound) {
         alert("查無此路線，請重新輸入");
-        setBusInput("");
+        businput.setBusInput("");
       }
     } else {
       alert("請輸入巴士號碼");
@@ -82,9 +83,9 @@ const RouteSearch = () => {
                   list="search"
                   id="input-search-busNo"
                   placeholder="請輸入巴士號碼..."
-                  value={BusInput}
+                  value={businput.BusInput}
                   onChange={(event) => {
-                    setBusInput(event.target.value);
+                    businput.setBusInput(event.target.value);
                   }}
                 ></input>
                 <SelectMenu data={data}></SelectMenu>
@@ -92,7 +93,9 @@ const RouteSearch = () => {
 
               {/* need a datalist to select 巴士號碼 */}
 
-              <div>輸入路線：{BusInput && BusInput.toUpperCase()}</div>
+              <div>
+                輸入路線：{businput.BusInput && businput.BusInput.toUpperCase()}
+              </div>
               <div className="searchbtn"></div>
               <div>目的地 </div>
               <div>
@@ -106,7 +109,7 @@ const RouteSearch = () => {
                 type="button"
                 className="btn btn-secondary"
                 onClick={() => {
-                  searchBusStation(BusInput);
+                  searchBusStation(businput.BusInput);
                 }}
               >
                 查看路線
@@ -116,7 +119,7 @@ const RouteSearch = () => {
             {/* {return reselt of the route} */}
             {showRoute &&
               data
-                .filter((target) => target.route === BusInput)
+                .filter((target) => target.route === businput.BusInput)
                 .map((filteredTarget) => (
                   <li key={filteredTarget.seq + filteredTarget.bound}>
                     {/*   {useEffect(getBusStation(filteredTarget.stop), [])} */}
