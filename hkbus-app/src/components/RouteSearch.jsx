@@ -90,7 +90,6 @@ const RouteSearch = () => {
                 ></input>
                 <SelectMenu data={data}></SelectMenu>
               </div>
-
               {/* need a datalist to select 巴士號碼 */}
 
               <div>

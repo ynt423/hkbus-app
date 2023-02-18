@@ -12,13 +12,12 @@ const SelectMenu = ({ data }) => {
   const busNumberRendering = () => {
     console.log("Rendering busnum is working...");
 
-    for (let i = 0; i < data.length; i++) {
-      if (!busNoArr.includes(data[i].route)) {
-        busNoArr.push(data[i].route);
-        console.log("bus number has push into busNoArr");
+    data.map((d) => {
+      if (!busNoArr.includes(d.route)) {
+        busNoArr.push(d.route);
         setBuslength(busNoArr.length);
       }
-    }
+    });
   };
 
   useEffect(() => {
@@ -70,7 +69,7 @@ const SelectMenu = ({ data }) => {
     }
   );
   return (
-    <div length={buslength}>
+    <div>
       <Dropdown>
         <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
           選擇路線
@@ -78,7 +77,10 @@ const SelectMenu = ({ data }) => {
 
         <Dropdown.Menu className="dropdown-menu" as={CustomMenu}>
           {busNoArr.map((n) => (
-            <DropdownItem onClick={() => businput.setBusInput(n)}>
+            <DropdownItem
+              onClick={() => businput.setBusInput(n)}
+              length={buslength}
+            >
               {n}
             </DropdownItem>
           ))}
