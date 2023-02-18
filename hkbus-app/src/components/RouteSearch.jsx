@@ -127,7 +127,7 @@ const RouteSearch = () => {
                 type="button"
                 className="btn btn-secondary"
                 onClick={() => {
-                  setRouteArrI(searchBusStation(businput.BusInput));
+                  setRouteArrI(searchBusStation(BusInput));
                   console.log(routeArrI);
                 }}
               >

@@ -6,7 +6,6 @@ import DropdownItem from "react-bootstrap/esm/DropdownItem";
 
 const SelectMenu = ({ data, setBusInput }) => {
   const [busNoArr, setBusNoArr] = useState([]);
-  const [buslength, setBuslength] = useState(0);
   const busNumberRendering = useCallback(() => {
     const newBusNoArr = [...busNoArr]; //temp array
 
@@ -16,7 +15,6 @@ const SelectMenu = ({ data, setBusInput }) => {
       }
     });
     setBusNoArr(newBusNoArr); //setstate
-    setBuslength(newBusNoArr.length); //setstate
   });
 
   useEffect(() => {
@@ -76,9 +74,7 @@ const SelectMenu = ({ data, setBusInput }) => {
 
         <Dropdown.Menu className="dropdown-menu" as={CustomMenu}>
           {busNoArr.map((n) => (
-            <DropdownItem onClick={() => setBusInput(n)} length={buslength}>
-              {n}
-            </DropdownItem>
+            <DropdownItem onClick={() => setBusInput(n)}>{n}</DropdownItem>
           ))}
           {/* <Dropdown.Item eventKey="1">Red</Dropdown.Item>
           <Dropdown.Item eventKey="2">Blue</Dropdown.Item>
