@@ -2,8 +2,20 @@ import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import Dropdown from "react-bootstrap/Dropdown";
 import Form from "react-bootstrap/Form";
+import DropdownItem from "react-bootstrap/esm/DropdownItem";
 
-const SelectMenu = () => {
+const SelectMenu = ({ data }) => {
+  /* const busNumberRendering = (data) => {
+    console.log("Rendering busnum is working...");
+    data &&
+      data.map((d) => {
+        //for checking
+        console.log("Result is found!");
+        console.log(d.route);
+        return d;
+        // for select menu to show all the bus number
+      });
+  }; */
   const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
     <a
       href=""
@@ -56,6 +68,10 @@ const SelectMenu = () => {
         </Dropdown.Toggle>
 
         <Dropdown.Menu as={CustomMenu}>
+          {data &&
+            data.map((d) => {
+              return <DropdownItem data={d.route}>{d.route}</DropdownItem>;
+            })}
           <Dropdown.Item eventKey="1">Red</Dropdown.Item>
           <Dropdown.Item eventKey="2">Blue</Dropdown.Item>
           <Dropdown.Item eventKey="3" active>
