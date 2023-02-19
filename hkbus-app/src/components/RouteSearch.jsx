@@ -15,7 +15,6 @@ const RouteSearch = () => {
   const handleChange = () => {
     showRoute === false ? setShowRoute(true) : setShowRoute(false);
   };
-  /*  By oscar: I want to write this function for fetching json data */
 
   const getData = async () => {
     const response = await fetch(
