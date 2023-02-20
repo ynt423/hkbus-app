@@ -68,6 +68,7 @@ const RouteSearch = () => {
           data.map((d) => {
             //for checking
             if (d.route === BusInput) {
+              console.log(d);
               console.log("Result is found!");
               console.log(d.stop, d.seq, d.bound, d.service_type);
               if (d.bound === "I") {
