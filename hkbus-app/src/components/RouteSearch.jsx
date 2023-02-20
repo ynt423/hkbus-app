@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import BusRoute from "./BusRoute";
 import SelectMenu from "./SelectMenu";
 import "bootstrap/dist/css/bootstrap.css";
+import ListGroup from "react-bootstrap/ListGroup";
+import BusStop from "./BusStop";
 
 const RouteSearch = () => {
   const [BusInput, setBusInput] = useState("");
@@ -11,11 +13,21 @@ const RouteSearch = () => {
   const [routeArrI, setRouteArrI] = useState([]);
   const [routeArrO, setRouteArrO] = useState([]);
   let [showRoute, setShowRoute] = useState(false);
+  const [busStopList, setbusStopList] = useState([]);
 
   const handleChange = () => {
     showRoute === false ? setShowRoute(true) : setShowRoute(false);
   };
 
+  const getBusStationList = async (stop_id) => {
+    const response = await fetch(
+      //此API帶有16個字母的巴士站ID，並返回相應的巴士站資料。（備註：要查找相應的巴士站ID，用戶可以查詢“ Route-Stop API”）
+      `https://data.etabus.gov.hk/v1/transport/kmb/stop/{${stop_id}}`
+    );
+    let { data } = await response.json();
+    console.log(data);
+    return data;
+  };
   const getData = async () => {
     const response = await fetch(
       "https://data.etabus.gov.hk/v1/transport/kmb/route-stop"
@@ -138,8 +150,17 @@ const RouteSearch = () => {
                 type="button"
                 className="btn btn-secondary"
                 onClick={() => {
-                  console.log(busStation[0].stop);
-                  searchBusStation(BusInput.toUpperCase());
+                  /*   console.log(busStation[0].stop);
+                  searchBusStation(BusInput.toUpperCase()); */
+                  /* getBusStationList() */
+                  /* console.log(searchBusStation(BusInput.toUpperCase())[0]); */
+
+                  const tmpbusstoplistarr = [];
+
+                  searchBusStation(BusInput.toUpperCase()).map((d) => {
+                    tmpbusstoplistarr.push(stationNameConverter(d));
+                  });
+                  setbusStopList(tmpbusstoplistarr);
                 }}
               >
                 查看路線
@@ -153,8 +174,11 @@ const RouteSearch = () => {
               <b> {stationNameConverter(routeArrI[routeArrI.length - 1])} </b>
             </div>
 
-            <div className="routedata"></div>
-            {/* {return reselt of the route} */}
+            <div className="routedata">
+              <BusStop busStopList={busStopList}></BusStop>
+            </div>
+
+            {}
             {showRoute &&
               data
                 .filter((target) => target.route === BusInput)
