@@ -127,7 +127,7 @@ const RouteSearch = () => {
                 type="button"
                 className="btn btn-secondary"
                 onClick={() => {
-                  setRouteArrI(searchBusStation(BusInput));
+                  setRouteArrI(searchBusStation(BusInput.toUpperCase()));
                   console.log(routeArrI);
                 }}
               >
@@ -139,7 +139,7 @@ const RouteSearch = () => {
                 className="btn btn-secondary"
                 onClick={() => {
                   console.log(busStation[0].stop);
-                  searchBusStation(BusInput);
+                  searchBusStation(BusInput.toUpperCase());
                 }}
               >
                 查看路線
