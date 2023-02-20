@@ -14,6 +14,7 @@ const RouteSearch = () => {
   const [routeArrO, setRouteArrO] = useState([]);
   let [showRoute, setShowRoute] = useState(false);
   const [busStopList, setbusStopList] = useState([]);
+  const [busSequence, setSequence] = useState([]);
 
   const handleChange = () => {
     showRoute === false ? setShowRoute(true) : setShowRoute(false);
@@ -140,6 +141,7 @@ const RouteSearch = () => {
                 className="btn btn-secondary"
                 onClick={() => {
                   setRouteArrI(searchBusStation(BusInput.toUpperCase()));
+
                   console.log(routeArrI);
                 }}
               >
@@ -156,10 +158,13 @@ const RouteSearch = () => {
                   /* console.log(searchBusStation(BusInput.toUpperCase())[0]); */
 
                   const tmpbusstoplistarr = [];
+                  const tmpseqarr = [];
 
                   searchBusStation(BusInput.toUpperCase()).map((d) => {
                     tmpbusstoplistarr.push(stationNameConverter(d));
+                    tmpseqarr.push(d.seq);
                   });
+                  setSequence(tmpseqarr);
                   setbusStopList(tmpbusstoplistarr);
                 }}
               >
@@ -175,7 +180,10 @@ const RouteSearch = () => {
             </div>
 
             <div className="routedata">
-              <BusStop busStopList={busStopList}></BusStop>
+              <BusStop
+                busStopList={busStopList}
+                busSequence={busSequence}
+              ></BusStop>
             </div>
 
             {showRoute &&
