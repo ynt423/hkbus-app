@@ -178,7 +178,6 @@ const RouteSearch = () => {
               <BusStop busStopList={busStopList}></BusStop>
             </div>
 
-            {}
             {showRoute &&
               data
                 .filter((target) => target.route === BusInput)
