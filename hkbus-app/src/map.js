@@ -1,7 +1,5 @@
-import React from 'react'
+import React from "react";
 
-export default function map() {
-  return (
-    <div>map</div>
-  )
+export default function Map() {
+  return <div>map</div>;
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import index from "./index";
-import map from "./map";
+import Map from "./Map";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -14,7 +14,7 @@ export default function App() {
         <Navbar bg="dark" variant="dark">
           <Container>
             <Navbar.Brand>香港交通一站通</Navbar.Brand>
-            <Nav className="me-auto">
+            <Nav className="justify-content-end">
               <Nav.Link href="/">主頁</Nav.Link>
               <Nav.Link href="/map">地圖</Nav.Link>
             </Nav>
@@ -23,7 +23,7 @@ export default function App() {
 
         <Routes>
           <Route path="/" element={<home />} />
-          <Route path="/map" element={<map />} />
+          <Route path="/map" element={<Map />} />
           <Route path="*" element={<h1>404</h1>} />
         </Routes>
       </BrowserRouter>
