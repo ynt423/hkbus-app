@@ -4,6 +4,8 @@ import Map from "./Map";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import "font-awesome/css/font-awesome.css";
+import "font-awesome/css/font-awesome.min.css";
 
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
@@ -13,10 +15,18 @@ export default function App() {
       <BrowserRouter>
         <Navbar bg="dark" variant="dark">
           <Container>
-            <Navbar.Brand>香港交通一站通</Navbar.Brand>
+            <Navbar.Brand>
+              <i class="fa fa-bus" aria-hidden="true"></i> 香港交通一站通
+            </Navbar.Brand>
             <Nav className="justify-content-end">
-              <Nav.Link href="/">主頁</Nav.Link>
-              <Nav.Link href="/map">地圖</Nav.Link>
+              <Nav.Link href="/">
+                <i className="fa fa-home fa-lg" aria-hidden="true"></i>
+                <span> 主頁</span>
+              </Nav.Link>
+              <Nav.Link href="/map">
+                <i class="fa fa-map" aria-hidden="true"></i>
+                <span> 地圖</span>
+              </Nav.Link>
             </Nav>
           </Container>
         </Navbar>
