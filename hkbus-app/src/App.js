@@ -6,6 +6,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import "font-awesome/css/font-awesome.css";
 import "font-awesome/css/font-awesome.min.css";
+import Search from "./search";
 
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
@@ -27,6 +28,11 @@ export default function App() {
                 <i class="fa fa-map" aria-hidden="true"></i>
                 <span> 地圖</span>
               </Nav.Link>
+
+              <Nav.Link href="/routesearch">
+              <i class='fa fa-search'></i>
+                <span> 路線搜尋</span>
+              </Nav.Link>
             </Nav>
           </Container>
         </Navbar>
@@ -35,6 +41,7 @@ export default function App() {
           <Route path="/" element={<home />} />
           <Route path="/map" element={<Map />} />
           <Route path="*" element={<h1>404</h1>} />
+          <Route path="/routesearch" element={<Search/>} />
         </Routes>
       </BrowserRouter>
     </React.Fragment>
