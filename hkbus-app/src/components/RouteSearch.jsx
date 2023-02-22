@@ -4,7 +4,8 @@ import BusRoute from "./BusRoute";
 import SelectMenu from "./SelectMenu";
 import "bootstrap/dist/css/bootstrap.css";
 import BusStop from "./BusStop";
-
+import "font-awesome/css/font-awesome.css";
+import "font-awesome/css/font-awesome.min.css";
 const RouteSearch = () => {
   const [BusInput, setBusInput] = useState("");
   const [data, setData] = useState([]);
