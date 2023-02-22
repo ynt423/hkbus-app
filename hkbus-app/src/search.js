@@ -1,15 +1,12 @@
-import React from 'react';
-import RouteSearch from './components/RouteSearch';
-
+import React from "react";
+import RouteSearch from "./components/RouteSearch";
 
 const Search = () => {
-    return (
-        <div>
-            <RouteSearch/>
-
-
-        </div>
-    );
-}
+  return (
+    <div>
+      <RouteSearch />
+    </div>
+  );
+};
 
 export default Search;
