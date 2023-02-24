@@ -7,6 +7,7 @@ import Navbar from "react-bootstrap/Navbar";
 import "font-awesome/css/font-awesome.css";
 import "font-awesome/css/font-awesome.min.css";
 import Search from "./search";
+import Home from "./Home";
 
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
@@ -38,7 +39,7 @@ export default function App() {
         </Navbar>
 
         <Routes>
-          <Route path="/" element={<home />} />
+          <Route path="/" element={<Home />} />
           <Route path="/map" element={<Map />} />
           <Route path="*" element={<h1>404</h1>} />
           <Route path="/routesearch" element={<Search/>} />
