@@ -31,7 +31,7 @@ export default function App() {
               </Nav.Link>
 
               <Nav.Link href="/routesearch">
-              <i class='fa fa-search'></i>
+                <i class="fa fa-search"></i>
                 <span> 路線搜尋</span>
               </Nav.Link>
             </Nav>
@@ -41,8 +41,8 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/map" element={<Map />} />
-          <Route path="*" element={<h1>404</h1>} />
-          <Route path="/routesearch" element={<Search/>} />
+          <Route path="*" element={<Search />} />
+          <Route path="/routesearch" element={<Search />} />
         </Routes>
       </BrowserRouter>
     </React.Fragment>

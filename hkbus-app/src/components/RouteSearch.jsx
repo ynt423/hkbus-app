@@ -1,6 +1,6 @@
 import "../styles/index.css";
 import React, { useState, useEffect } from "react";
-import BusRoute from "./BusRoute";
+/* import BusRoute from "./BusRoute"; */
 import SelectMenu from "./SelectMenu";
 import "bootstrap/dist/css/bootstrap.css";
 import BusStop from "./BusStop";

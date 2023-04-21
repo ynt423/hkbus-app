@@ -1,5 +1,6 @@
 {
   "name": "hkbus-app",
+  "homepage": "http://ynt423.github.io/hkbus-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -8,6 +9,7 @@
     "@testing-library/user-event": "^13.5.0",
     "bootstrap": "^5.2.3",
     "font-awesome": "^4.7.0",
+    "gh-pages": "^5.0.0",
     "node-modules": "^1.0.1",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.2",
@@ -18,6 +20,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
