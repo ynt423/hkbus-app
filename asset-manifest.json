@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/hkbus-app/static/css/main.e917d52f.css",
-    "main.js": "/hkbus-app/static/js/main.f877cd5a.js",
+    "main.js": "/hkbus-app/static/js/main.ba93f759.js",
     "static/media/fontawesome-webfont.svg?v=4.7.0": "/hkbus-app/static/media/fontawesome-webfont.c1e38fd9e0e74ba58f7a.svg",
     "static/media/fontawesome-webfont.eot": "/hkbus-app/static/media/fontawesome-webfont.8b43027f47b20503057d.eot",
     "static/media/fontawesome-webfont.ttf?v=4.7.0": "/hkbus-app/static/media/fontawesome-webfont.1e59d2330b4c6deb84b3.ttf",
@@ -9,10 +9,10 @@
     "static/media/fontawesome-webfont.woff2?v=4.7.0": "/hkbus-app/static/media/fontawesome-webfont.20fd1704ea223900efa9.woff2",
     "index.html": "/hkbus-app/index.html",
     "main.e917d52f.css.map": "/hkbus-app/static/css/main.e917d52f.css.map",
-    "main.f877cd5a.js.map": "/hkbus-app/static/js/main.f877cd5a.js.map"
+    "main.ba93f759.js.map": "/hkbus-app/static/js/main.ba93f759.js.map"
   },
   "entrypoints": [
     "static/css/main.e917d52f.css",
-    "static/js/main.f877cd5a.js"
+    "static/js/main.ba93f759.js"
   ]
 }
