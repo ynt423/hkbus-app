@@ -42,7 +42,7 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/map" element={<Map />} />
           <Route path="*" element={<Search />} />
-          <Route path="/routesearch" element={<Search />} />
+          <Route path="/hkbus-app" element={<Search />} />
         </Routes>
       </BrowserRouter>
     </React.Fragment>
