@@ -40,8 +40,8 @@ export default function App() {
 
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/map" element={<Map />} />
-          <Route path="*" element={<Search />} />
+          <Route path="/hkbus-app/map" element={<Map />} />
+          {/* <Route path="*" element={<Search />} /> */}
           <Route path="/hkbus-app" element={<Search />} />
         </Routes>
       </BrowserRouter>
